@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "----------------------------------------------------------------"
-echo "Setting Up Your Hub W/ Zigbee2MQTT - Ver 1.2"
+echo "Setting Up Your Hub W/ Zigbee2MQTT - Ver 1.0"
 echo "----------------------------------------------------------------"
 echo " "
 # Node setup
@@ -14,6 +14,7 @@ sudo git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
 echo " "
 echo ">>>>> Install dependencies <<<<<"
 cd /opt/zigbee2mqtt
+git checkout HEAD -- npm-shrinkwrap.json
 git fetch
 git checkout dev
 git pull
@@ -35,7 +36,7 @@ mqtt:
   # MQTT base topic for Zigbee2MQTT MQTT messages
   base_topic: zigbee2mqtt
   # MQTT server URL
-  server: 'mqtt://192.168.0.4:1883'
+  server: 'mqtt://192.168.8.169:1883'
   # MQTT server authentication, uncomment if required:
   # user: mqtt
   # password: mqtt
@@ -43,13 +44,13 @@ mqtt:
 # Serial settings
 serial:
   # Location of the adapter (see first step of this guide)
-  port: /dev/ttyACM0
+  port: /dev/ttyUSB0
 
 frontend:
   # Optional, default 8080 or you can use your own as well.
-  port: 8082
+  port: 8080
   # IP address of the device running Zigbee2MQTT
-  host: 192.168.0.4
+  host: 192.168.8.169
 advanced:
   log_level: debug
   network_key: GENERATE
